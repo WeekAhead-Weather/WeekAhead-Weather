@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
 
 :root {
-  --gradient: linear-gradient(135deg, #72EDF2 10%, #5151E5 100%);
+  --gradient: linear-gradient(135deg, #4C6B8C 10%, #D8A7B1 100%); /* Darker pastel gradient */
 }
 
 * {
@@ -26,9 +26,9 @@ body {
 
 .container {
   border-radius: 25px;
-  box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
-  background-color: #222831;
-  color: #ffffff;
+  box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.3); /* Darker shadow for more depth */
+  background-color: #333; /* Darker container background */
+  color: #e0e0e0; /* Lighter text for contrast */
   height: 500px;
   width: auto;
 }
@@ -39,7 +39,7 @@ body {
   border-radius: 25px;
   background-image: url("https://img.freepik.com/free-photo/sunset-beach-sea-wave_1150-11145.jpg");
   width: 300px;
-  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.3);
   transition: transform 300ms ease;
   transform: translateZ(0) scale(1.02) perspective(1000px);
   float: left;
@@ -57,7 +57,7 @@ body {
   left: 0;
   background-image: var(--gradient);
   border-radius: 25px;
-  opacity: 0.4;
+  opacity: 0.6; /* Slightly higher opacity for more color depth */
 }
 
 .date-container {
@@ -101,10 +101,13 @@ body {
   margin: 0;
   font-weight: 700;
   font-size: 4em;
+  color: #E76F51; /* Darker pastel coral color */
 }
 
 .weather-desc {
   margin: 0;
+  font-size: 1.2em;
+  color: #d1d1d1; /* Lighter text for the weather description */
 }
 
 .info-side {
@@ -117,8 +120,9 @@ body {
 .today-info {
   padding: 15px;
   margin: 0 25px 25px 25px;
-  box-shadow: 0 0 50px -5px rgba(0, 0, 0);
+  box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.3); /* Darker shadow */
   border-radius: 10px;
+  background-color: #444; /* Darker background for info boxes */
 }
 
 .today-info>div:not(:last-child) {
@@ -138,8 +142,9 @@ body {
   list-style-type: none;
   padding: 0;
   margin: 10px 35px;
-  box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  background-color: #444; /* Darker background for the weekly list */
 }
 
 .week-list>li {
@@ -148,17 +153,18 @@ body {
   cursor: pointer;
   transition: 200ms ease;
   border-radius: 10px;
+  background-color: #555; /* Darker pastel background for list items */
 }
 
 .week-list>li:hover {
   transform: scale(1.1);
-  background: #fff;
+  background: #D8A7B1; /* Darker pastel pink on hover */
   color: #222831;
-  box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
+  box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.3);
 }
 
 .week-list>li.active {
-  background: #fff;
+  background: #D8A7B1; /* Active day with a darker pastel pink color */
   color: #222831;
   border-radius: 10px;
 }
@@ -204,7 +210,7 @@ body {
   padding: 10px;
   font-family: 'Montserrat', sans-serif;
   background-image: var(--gradient);
-  color: #000000;
+  color: #222831;
   font-weight: 700;
   box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
   transition: transform 200ms ease;
