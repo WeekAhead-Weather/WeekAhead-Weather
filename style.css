@@ -1,12 +1,13 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
 
+/* Root Variables */
 :root {
-  --gradient: linear-gradient(135deg, #4C6B8C 10%, #D8A7B1 100%); /* Darker pastel gradient */
+    --gradient: linear-gradient(135deg, #4C6B8C 10%, #D8A7B1 100%);
 }
 
 * {
-  box-sizing: border-box;
-  line-height: 1.25em;
+  line-height: 1.25em;;
 }
 
 .clear {
@@ -15,192 +16,252 @@
 
 body {
   margin: 0;
-  width: 100%;
-  height: 100vh;
+  padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: var(--gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(135deg, #4C6B8C 10%, #D8A7B1 100%);
+  background-attachment: fixed; /* Keeps background fixed during scroll */
+  background-size: cover; /* Ensures the background covers the entire viewport */
+  background-repeat: no-repeat; /* Prevents repetition of the background */
+  animation: fadeIn 1.5s ease-in-out;
+  line-height: 1.25em;
 }
 
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.dashboard {
+  float: center;
+    max-width: 1350px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    justify-content: stretch;
+    text-align: left;
+    
+}
+
+/* Header Styles */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  animation: slideUp 1s ease-in-out;
+}
+
+/* Container Styles */
 .container {
-  border-radius: 25px;
-  box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.3); /* Darker shadow for more depth */
-  background-color: #333; /* Darker container background */
-  color: #e0e0e0; /* Lighter text for contrast */
-  height: 500px;
-  width: auto;
+    border-radius: 25px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7),
+                0 0 25px rgba(255, 240, 180, 0.5),
+                0 0 35px rgba(255, 200, 100, 0.3),
+                0 0 50px rgba(255, 180, 50, 0.1);
+    background-color: #333;
+    color: #e0e0e0;
+    height: 700px;
+    width: 100%;
+    flex-direction: row;
 }
 
+/* Weather Side Styles */
 .weather-side {
-  position: relative;
-  height: 100%;
-  border-radius: 25px;
-  background-image: url("https://img.freepik.com/free-photo/sunset-beach-sea-wave_1150-11145.jpg");
-  width: 300px;
-  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.3);
-  transition: transform 300ms ease;
-  transform: translateZ(0) scale(1.02) perspective(1000px);
-  float: left;
+    position: relative;
+    height: 100%;
+    border-radius: 25px;
+    background-image: url("https://img.freepik.com/free-photo/sunset-beach-sea-wave_1150-11145.jpg");
+    width: 300px;
+    box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.3);
+    transition: transform 300ms ease;
+    transform: translateZ(0) scale(1.02) perspective(1000px);
+    float: left;
 }
 
 .weather-side:hover {
-  transform: scale(1.1) perspective(1500px) rotateY(10deg);
+    transform: scale(1.1) perspective(1500px) rotateY(10deg);
 }
 
 .weather-gradient {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-image: var(--gradient);
-  border-radius: 25px;
-  opacity: 0.6; /* Slightly higher opacity for more color depth */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: var(--gradient);
+    border-radius: 25px;
+    opacity: 0.6;
 }
 
+/* Date Container Styles */
 .date-container {
-  position: absolute;
-  top: 25px;
-  left: 25px;
+    position: absolute;
+    top: 25px;
+    left: 25px;
 }
 
 .date-dayname {
-  margin: 0;
+    margin: 0;
 }
 
 .date-day {
-  display: block;
+    display: block;
 }
 
 .location {
-  display: inline-block;
-  margin-top: 10px;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .location-icon {
-  display: inline-block;
-  height: 0.8em;
-  width: auto;
-  margin-right: 5px;
+    display: inline-block;
+    height: 0.8em;
+    width: auto;
+    margin-right: 5px;
 }
 
+/* Weather Container Styles */
 .weather-container {
-  position: absolute;
-  bottom: 25px;
-  left: 25px;
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    
 }
 
 .weather-icon img {
-  filter: drop-shadow(0 0 2px #fff);
-  width: 100%;
+    filter: drop-shadow(0 0 2px #fff);
+    width: 100%;
 }
 
 .weather-temp {
-  margin: 0;
-  font-weight: 700;
-  font-size: 4em;
-  color: #E76F51; /* Darker pastel coral color */
+    margin: 0;
+    font-weight: 700;
+    font-size: 4em;
+    color: #E76F51;
 }
 
 .weather-desc {
-  margin: 0;
-  font-size: 1.2em;
-  color: #d1d1d1; /* Lighter text for the weather description */
+    margin: 0;
+    font-size: 1.2em;
+    color: #d1d1d1;
 }
 
+/* Info Side Styles */
 .info-side {
-  position: relative;
-  float: left;
-  height: 100%;
-  padding-top: 25px;
+    position: relative;
+    float: left;
+    height: 100%;
+    padding-top: 25px;
 }
 
 .today-info {
-  padding: 15px;
-  margin: 0 25px 25px 25px;
-  box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.3); /* Darker shadow */
-  border-radius: 10px;
-  background-color: #444; /* Darker background for info boxes */
+    padding: 15px;
+    margin: 0 25px 25px 25px;
+    box-shadow: 0 0 30px -5px rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: #444;
 }
 
-.today-info>div:not(:last-child) {
-  margin: 0 0 10px 0;
+.today-info > div:not(:last-child) {
+    margin: 0 0 10px 0;
 }
 
-.today-info>div .title {
-  float: left;
-  font-weight: 700;
+.today-info > div .title {
+    float: left;
+    font-weight: 700;
 }
 
-.today-info>div .value {
-  float: right;
+.today-info > div .value {
+    float: right;
 }
 
+/* Weekly Forecast Styles */
 .week-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 10px 35px;
-  box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background-color: #444; /* Darker background for the weekly list */
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 35px;
+    box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #00000000;
 }
 
-.week-list>li {
-  float: left;
-  padding: 15px;
-  cursor: pointer;
-  transition: 200ms ease;
-  border-radius: 10px;
-  background-color: #555; /* Darker pastel background for list items */
+.week-list > li {
+    float: left;
+    padding: 15px;
+    cursor: pointer;
+    transition: 200ms ease;
+    border-radius: 10px;
+    background-color: #555;
+    margin-left: 5px;
 }
 
-.week-list>li:hover {
-  transform: scale(1.1);
-  background: #D8A7B1; /* Darker pastel pink on hover */
-  color: #222831;
-  box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.3);
+.week-list > li:hover {
+    transform: scale(1.1);
+    background: #D8A7B1;
+    color: #222831;
+    box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.3);
 }
 
-.week-list>li.active {
-  background: #D8A7B1; /* Active day with a darker pastel pink color */
-  color: #222831;
-  border-radius: 10px;
+.week-list > li.active {
+    background: #D8A7B1;
+    color: #222831;
+    border-radius: 10px;
 }
 
-.week-list>li .day-name {
-  display: block;
-  margin: 10px 0 0 0;
-  text-align: center;
+.week-list > li .day-name {
+    display: block;
+    margin: 10px 0 0 0;
+    text-align: center;
 }
 
-.week-list>li .day-icon {
-  display: flex;
-  margin-top: 20px;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  width: auto;
-  margin: 0 auto;
-  font-size: 35px;
+.week-list > li .day-icon {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: auto;
+    margin: 0 auto;
+    font-size: 35px;
 }
 
-.week-list>li .day-icon img {
-  filter: drop-shadow(0 0 2px white);
+.week-list > li .day-icon img {
+    filter: drop-shadow(0 0 2px white);
 }
 
-.week-list>li .day-temp {
-  display: block;
-  text-align: center;
-  margin-top: 15px;
-  font-weight: 700;
-  margin-bottom: 25px;
+.week-list > li .day-temp {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 700;
+    margin-bottom: 25px;
 }
 
+/* Location Input Styles */
 .location-container {
-  padding: 25px 35px;
+    padding: 25px 35px;
+    margin-top: 20px;
 }
+
 
 .location-input {
   position: relative;
@@ -209,13 +270,173 @@ body {
   border-radius: 25px;
   padding: 10px;
   font-family: 'Montserrat', sans-serif;
-  background-image: var(--gradient);
-  color: #222831;
+  background: linear-gradient(135deg, #4C6B8C 10%, #D8A7B1 100%);
+  color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
-  transition: transform 200ms ease;
+  box-shadow: 0 0 30px -5px rgba(51, 144, 221, 0.979);
+  
 }
 
 .location-input:hover {
   transform: scale(0.95);
+}
+
+button {
+    padding: 5px 15px;
+    background-color: #4C6B8C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #4C6B8C;
+    transform: scale(1.1);
+}
+
+#add-favorite {
+    background-color: #D8A7B1;
+    color: white;
+}
+
+#add-favorite:hover {
+    background-color: #D8A7B1;
+}
+
+.map-container {
+  height: 400px;  /* Fixed height instead of 100px */
+  margin-top: 30px;  /* Space above the map */
+  margin-bottom: 40px;  /* Added space below the map */
+  border-radius: 10px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.map-wrapper {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 40px;  /* Additional space at the bottom */
+}
+
+/* Favorites Section */
+.favorites {
+
+  float: right;
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.favorite-city {
+  display: contents;
+  align-items: flex-start;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.favorite-city button {
+  margin-right: 5px;
+}
+
+.remove-favorite {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 0.8em;
+}
+
+.favorites button:hover {
+  background-color: #ff2222;
+  transform: scale(1.1);
+}
+
+/* Footer Styles */
+.footer {
+  position: static;
+  width: 100%;
+  background: linear-gradient(135deg, #4C6B8C 10%, #D8A7B1 100%);
+  color: #fff;
+  text-align: center;
+  padding: 15px 10px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  font-size: 0.9em;
+  margin-top: 20px;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.footer p {
+  margin: 0;
+  font-weight: 400;
+}
+
+.footer i {
+  color: #E76F51;
+  animation: heartbeat 1.5s infinite;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.3);
+  }
+}
+
+/* Hourly Forecast */
+.hourly-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.hourly-forecast {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.hourly-forecast:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.hourly-weather-image {
+  width: 60px; /* Limits the width of the image */
+  height: 60px; /* Ensures the image has a uniform size */
+  object-fit: cover; /* Keeps the aspect ratio intact */
+  border-radius: 5px; /* Adds a subtle rounding to the image */
+  margin-bottom: 5px; /* Adds space between the image and the text */
+}
+
+.hourly-forecast {
+  margin-top: 30px;
+  padding-left: 15px;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.hourly-forecast img {
+  width: 20px;
+  vertical-align: middle;
+}
+
+.hourly-forecast p {
+  margin: 5px 0;
 }

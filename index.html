@@ -1,95 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">  
-    <link rel="stylesheet" href="style.css">
-    <title>Weather</title>
-</head>
-<body>
-    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 
-<div class="container">
-        <div class="weather-side">
-            <div class="weather-gradient"></div>
-            <div class="date-container">
-                <h2 class="date-dayname"></h2>
-                <span class="date-day"></span>
-                <i class="fa-solid fa-location-dot"></i>
-                <span class="location"></span>
-            </div>
-            <div class="weather-container">
-                <span class="weather-icon"></span>
-                <h1 class="weather-temp"></h1>
-                <h3 class="weather-desc"></h3>
-            </div>
-        </div>
-        <div class="info-side">
-            <div class="today-info-container">
-                <div class="today-info">
-                    <div class="humidity">
-                        <span class="title"><i class="fa-solid fa-droplet"></i> HUMIDITY</span>
-                        <span class="value"></span>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="wind">
-                        <span class="title"><i class="fa-solid fa-wind"></i> WIND</span>
-                        <span class="value"></span>
-                        <div class="clear"></div>
-                    </div>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>WeakAhead</h1>
+        </header>
+
+        <!-- Main Container -->
+        <div class="container">
+
+            <!-- Weather Section -->
+            <div class="weather-side">
+                <div class="weather-gradient"></div>
+
+                <div class="date-container">
+                    <h2 class="date-dayname"></h2>
+                    <span class="date-day"></span>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span class="location"></span>
+                </div>
+
+                <div class="weather-container">
+                    <span class="weather-icon"></span>
+                    <h1 class="weather-temp"></h1>
+                    <div class="feels-like-temp"></div>
+                    <h3 class="weather-desc"></h3>
                 </div>
             </div>
-            <div class="week-container">
-                <ul class="week-list">
-                    <li>
-                        <span class="day-name"></span>
-                        <span class="day-temp"></span>
-                        <span class="day-icon"></span>
-                    </li>
-                    <li>
-                        <span class="day-name"></span>
-                        <span class="day-temp"></span>
-                        <span class="day-icon"></span>
-                    </li>
-                    <li>
-                        <span class="day-name"></span>
-                        <span class="day-temp"></span>
-                        <span class="day-icon"></span>
-                    </li>
-                    <li>
-                        <span class="day-name"></span>
-                        <span class="day-temp"></span>
-                        <span class="day-icon"></span>
-                    </li>
-                    <li>
-                        <span class="day-name"></span>
-                        <span class="day-temp"></span>
-                        <span class="day-icon"></span>
-                    </li>
-                    <li>
-                        <span class="day-name"></span>
-                        <span class="day-temp"></span>
-                        <span class="day-icon"></span>
-                    </li>
-                    <div class="clear"></div>
-                </ul>
-            </div>
-            <div class="location-container">
-                
-                <input class="location-input" type="text" id="city" value="New York">
-            </div>
-        </div>
 
+            <!-- Info Section -->
+            <div class="info-side">
+                <div class="today-info-container">
+                    <div class="today-info">
+                        <div class="humidity">
+                            <span class="title"><i class="fa-solid fa-droplet"></i> HUMIDITY</span>
+                            <span class="value"></span>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="wind">
+                            <span class="title"><i class="fa-solid fa-wind"></i> WIND</span>
+                            <span class="value"></span>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Forecast -->
+                    <div class="week-list">
+                        <li>
+                            <span class="day-name"></span>
+                            <span class="day-temp"></span>
+                            <span class="day-icon"></span>
+                            <div class="hourly-forecast"></div> <!-- Hourly forecast will be inserted here -->
+                        </li>
+                        <li>
+                            <span class="day-name"></span>
+                            <span class="day-temp"></span>
+                            <span class="day-icon"></span>
+                            <div class="hourly-forecast"></div>
+                        </li>
+                        <li>
+                            <span class="day-name"></span>
+                            <span class="day-temp"></span>
+                            <span class="day-icon"></span>
+                            <div class="hourly-forecast"></div>
+                        </li>
+                        <li>
+                            <span class="day-name"></span>
+                            <span class="day-temp"></span>
+                            <span class="day-icon"></span>
+                            <div class="hourly-forecast"></div>
+                        </li>
+                        <li>
+                            <span class="day-name"></span>
+                            <span class="day-temp"></span>
+                            <span class="day-icon"></span>
+                            <div class="hourly-forecast"></div>
+                        </li>
+                        <li>
+                            <span class="day-name"></span>
+                            <span class="day-temp"></span>
+                            <span class="day-icon"></span>
+                            <div class="hourly-forecast"></div>
+                        </li>
+                        <div class="clear"></div>
+                    </div>
+                
+
+                <!-- Location Input -->
+                <div class="location-container">
+                    <input class="location-input" type="text" id="city" placeholder="Enter city name">
+                    <button id="unit-toggle">°C / °F</button>
+                    
+                </div>
+                
+            </div>
+            <section>
+            <!-- Map Section -->
+            <div class="map-container" id="map" style="width: 100%; height: 400px;"></div>
+           
+        </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>© 2024 WeakAhead. All Rights Reserved | Designed with <i class="fa-solid fa-heart"></i> by YourName</p>
+            </footer>
+        </div>
     </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- External JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
+
+    <!-- Custom Script -->
     <script src="script.js"></script>
 </body>
+
 </html>
