@@ -49,9 +49,9 @@ body {
 
 .dashboard {
   float: center;
-    max-width: 1350px;
+    max-width: 2050px;
     margin: auto;
-    padding: 20px;
+    padding: 30px;
     display: grid;
     justify-content: stretch;
     text-align: left;
@@ -104,7 +104,7 @@ body {
                 0 0 50px rgba(255, 180, 50, 0.1);
     background-color: #333;
     color: #e0e0e0;
-    height: 700px;
+    height: 800px;
     width: 100%;
     flex-direction: row;
 }
@@ -115,7 +115,7 @@ body {
     height: 100%;
     border-radius: 25px;
     background-image: url("https://img.freepik.com/free-photo/sunset-beach-sea-wave_1150-11145.jpg");
-    width: 300px;
+    width: 200px;
     box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.3);
     transition: transform 300ms ease;
     transform: translateZ(0) scale(1.02) perspective(1000px);
@@ -286,7 +286,9 @@ body {
     padding: 25px 35px;
     margin-top: 20px;
 }
-
+.location-input::placeholder {
+  color: rgb(247, 247, 247); /* Change placeholder text color to red */
+}
 
 .location-input {
   position: relative;
