@@ -491,3 +491,22 @@ button:hover {
 .hourly-forecast p {
   margin: 5px 0;
 }
+/* Add responsive design for mobile */
+@media (max-width: 768px) {
+  .container {
+    height: auto; 
+  }
+  .weather-side, .info-side {
+    width: 100%; 
+    height: auto;
+  }
+  .dashboard {
+    grid-template-columns: 1fr; 
+  }
+  .location-input {
+    width: 100%; 
+  }
+  .header {
+    font-size: 2rem;
+  }
+}
