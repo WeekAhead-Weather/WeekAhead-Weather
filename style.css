@@ -13,19 +13,34 @@
 .clear {
   clear: both;
 }
-
 body {
+  background: linear-gradient(135deg, #4C6B8C 10%, #D8A7B1 100%); /* Default gradient background */
+  background-position: center center;  /* Keeps the gradient centered */
+  background-size: cover;  /* Ensures the background covers the whole viewport */
+  background-repeat: no-repeat;  /* Prevents the background from repeating */
+  background-attachment: fixed;  /* Fixes the background in place while scrolling (optional) */
+  height: 100vh;  /* Full viewport height */
+  transition: background 1s ease-in-out;  /* Smooth transition for the background change */
+}
+
+/* Optionally, you can adjust the background-attachment on mobile for better performance */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll; /* Makes it scroll with the page on small devices */
+  }
+}
+
+/*body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(135deg, #4C6B8C 10%, #D8A7B1 100%);
-  background-attachment: fixed; /* Keeps background fixed during scroll */
-  background-size: cover; /* Ensures the background covers the entire viewport */
-  background-repeat: no-repeat; /* Prevents repetition of the background */
+  background-attachment: fixed;
+  background-size: cover; 
+  background-repeat: no-repeat;
   animation: fadeIn 1.5s ease-in-out;
   line-height: 1.25em;
-}
-
+*/
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -102,7 +117,7 @@ body {
                 0 0 25px rgba(255, 240, 180, 0.5),
                 0 0 35px rgba(255, 200, 100, 0.3),
                 0 0 50px rgba(255, 180, 50, 0.1);
-    background-color: #333;
+    background-color: #333333d7;
     color: #e0e0e0;
     height: 800px;
     width: 100%;
@@ -114,9 +129,12 @@ body {
     position: relative;
     height: 100%;
     border-radius: 25px;
-    background-image: url("https://img.freepik.com/free-photo/sunset-beach-sea-wave_1150-11145.jpg");
+    background-image: url("https://external-preview.redd.it/weathering-with-you-anime-live-wallpaper-v0-YW4wejBlZjlhd3RkMb2zuRaZa9XPNb7HRSIJzkfuS4NwmE_UZ3xm_GvQKae_.png?format=pjpg&auto=webp&s=8d270b012a4f7f769d04b8d8505997266c231f16");
+    background-size: cover; /* Ensures the image covers the entire element */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Ensures the image is centered */
     width: 200px;
-    box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 20px -10px rgb(0, 0, 0);
     transition: transform 300ms ease;
     transform: translateZ(0) scale(1.02) perspective(1000px);
     float: left;
@@ -134,7 +152,14 @@ body {
     left: 0;
     background-image: var(--gradient);
     border-radius: 25px;
-    opacity: 0.6;
+    opacity: 0.1;
+}
+.weather-side .date-container h2,
+.weather-side .date-container span,
+.weather-side .weather-container h1,
+.weather-side .weather-container h3,
+.weather-side .weather-container .feels-like-temp {
+    color: black; /* Make the text black */
 }
 
 /* Date Container Styles */
@@ -203,7 +228,7 @@ body {
     margin: 0 25px 25px 25px;
     box-shadow: 0 0 30px -5px rgb(255, 255, 255);
     border-radius: 10px;
-    background-color: #444;
+    background-color: #4444447f;
 }
 
 .today-info > div:not(:last-child) {
@@ -235,7 +260,7 @@ body {
     cursor: pointer;
     transition: 200ms ease;
     border-radius: 10px;
-    background-color: #555;
+    background-color: #55555580;
     margin-left: 5px;
 }
 
@@ -248,7 +273,7 @@ body {
 
 .week-list > li.active {
     background: #D8A7B1;
-    color: #222831;
+    color: #22283159;
     border-radius: 10px;
 }
 
@@ -457,7 +482,7 @@ button:hover {
 }
 
 .hourly-forecast {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.193);
   padding: 5px;
   border-radius: 5px;
   text-align: center;

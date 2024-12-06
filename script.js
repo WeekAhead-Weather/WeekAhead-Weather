@@ -192,3 +192,34 @@ document.addEventListener("DOMContentLoaded", function () {
     getWeather();
     setInterval(getWeather, 900000);
 });
+//updates background 
+function updateBackground() {
+    const body = document.querySelector('body');
+    
+    // Remove any previous background
+    body.style.backgroundImage = '';
+
+    const currentHour = new Date().getHours();
+
+    let backgroundImage = '';
+
+    if (currentHour >= 6 && currentHour < 12) {
+        // Morning (6 AM to 12 PM)
+        backgroundImage = "url('photos/morning.jpg')";
+    } else if (currentHour >= 12 && currentHour < 18) {
+        // Afternoon (12 PM to 6 PM)
+        backgroundImage = "url('photos/afternoon.jpg')";
+    } else if (currentHour >= 18 && currentHour < 21) {
+        // Evening (6 PM to 9 PM)
+        backgroundImage = "url('photos/evening.jpg')";
+    } else {
+        // Night (9 PM to 6 AM)
+        backgroundImage = "url('photos/night.jpg')";
+    }
+
+    // Apply the background image
+    body.style.backgroundImage = backgroundImage;
+    body.style.transition = "background-image 1s ease-in-out";
+}
+
+document.addEventListener('DOMContentLoaded', updateBackground);
