@@ -1,153 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
-
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-
-    <!-- Custom Styles -->
+    <title>Weather Dashboard</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- Leaflet for Maps -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
 </head>
-
 <body>
-    <div class="dashboard">
-        <div class="description">
-            <p>WeekAhead Forecast: Stay updated with the latest weather data for your city!</p>
-
-            <p>Your Weather. Your Way.
-                At WeekAhead, we’re committed to providing the most reliable and detailed weather data at your fingertips.</p>
-            <p>Our mission is to help you stay one step ahead of the weather, ensuring you can plan your day, your week,
-                and even your outdoor adventures with ease.</p>
+    <div class="weather-dashboard">
+        <header class="dashboard-header">
+            <h1 class="dashboard-title">WeekAhead</h1>
+        </header>
+        <header class="top-bar">
+            <input id="city" type="text" placeholder="Enter city name..." />
+            <button id="unit-toggle">°C / °F</button>
+            <button id="dark-mode-toggle">Dark Mode</button>
+        </header>
+        <div class="dashboard-content">
+            <section class="current-weather">
+                <h2 class="location">City</h2>
+                <div class="weather-info">
+                    <div class="weather-icon"></div>
+                    <div class="weather-temp">--</div>
+                    <div class="feels-like-temp">Feels Like: --</div>
+                    <p class="weather-desc">--</p>
+                </div>
+                <div class="additional-info">
+                    <div class="humidity">
+                        <h4>Humidity</h4>
+                        <p>--%</p>
+                    </div>
+                    <div class="wind-speed">
+                        <h4>Wind Speed</h4>
+                        <p>-- km/h</p>
+                    </div>
+                </div>
+            </section>
+            <section class="forecast">
+                <h3>Daily-Forecast</h3>
+                <div class="forecast-container"></div>
+            </section>
+            <section class="map-container">
+                <h3>Map</h3>
+                <div id="map"></div>
+            </section>
         </div>
-        
-        <header>
-            <h1 class="header">
-              <span>W</span><span>e</span><span>a</span><span>k</span><span>A</span><span>h</span><span>e</span><span>a</span><span>d</span>
-            </h1>
-          </header>
-          
-
-        <!-- Main Container -->
-        <div class="container">
-
-            <!-- Weather Section -->
-            <div class="weather-side">
-                <div class="weather-gradient"></div>
-
-                <div class="date-container">
-                    <h2 class="date-dayname"></h2>
-                    <span class="date-day"></span>
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span class="location"></span>
-                </div>
-
-                <div class="weather-container">
-                    <span class="weather-icon"></span>
-                    <h1 class="weather-temp"></h1>
-                    <div class="feels-like-temp"></div>
-                    <h3 class="weather-desc"></h3>
-                </div>
+        <!-- Weather News Section -->
+        <h3>Weather News</h3>
+        <div class="news-section">
+            <!-- News header -->
+            <div class="mini-news-container">
+                <img src="https://cdn.manilastandard.net/wp-content/uploads/2024/08/PAGASA-logo-696x696.png" alt="News Image 1" class="news-image">
+                <h4 class="news-title">Forecast Weather Conditions</h4>
+                <p class="news-publisher">PAGASA</p>
+                <button class="news-button" onclick="window.open('https://www.pagasa.dost.gov.ph/weather')">Read More</button>
             </div>
-
-            <!-- Info Section -->
-            <div class="info-side">
-                <div class="today-info-container">
-                    <div class="today-info">
-                        <div class="humidity">
-                            <span class="title"><i class="fa-solid fa-droplet"></i> HUMIDITY</span>
-                            <span class="value"></span>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="wind">
-                            <span class="title"><i class="fa-solid fa-wind"></i> WIND</span>
-                            <span class="value"></span>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Weekly Forecast -->
-                    <div class="week-list">
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temp"></span>
-                            <span class="day-icon"></span>
-                            <div class="hourly-forecast"></div> <!-- Hourly forecast will be inserted here -->
-                        </li>
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temp"></span>
-                            <span class="day-icon"></span>
-                            <div class="hourly-forecast"></div>
-                        </li>
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temp"></span>
-                            <span class="day-icon"></span>
-                            <div class="hourly-forecast"></div>
-                        </li>
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temp"></span>
-                            <span class="day-icon"></span>
-                            <div class="hourly-forecast"></div>
-                        </li>
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temp"></span>
-                            <span class="day-icon"></span>
-                            <div class="hourly-forecast"></div>
-                        </li>
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temp"></span>
-                            <span class="day-icon"></span>
-                            <div class="hourly-forecast"></div>
-                        </li>
-                        <div class="clear"></div>
-                    </div>
-                
-
-                <!-- Location Input -->
-                <div class="location-container">
-                    <input class="location-input" type="text" id="city" placeholder="Enter city name" st>
-                    <button id="unit-toggle">°C / °F</button>
-                    
-                </div>
-                
+            <div class="mini-news-container">
+                <img src="https://od2-image-api.abs-cbn.com/prod/editorImage/173304468702820240918-metro-manila-weather-JC6570.jpg" alt="News Image 2" class="news-image">
+                <h4 class="news-title">No tropical cyclones next week, says PAGASA</h4>
+                <p class="news-publisher">ABS-CBN</p>
+                <button class="news-button" onclick="window.open('https://www.abs-cbn.com/news/weather-traffic/2024/12/1/no-tropical-cyclones-next-week-says-pagasa-1719')">Read More</button>
             </div>
-            <section>
-            <!-- Map Section -->
-            <div class="map-container" id="map" style="width: 100%; height: 400px;"></div>
-           
-        </section>
-
-            <!-- Footer -->
-            <footer class="footer">
-                <p>© 2024 WeekAhead. All Rights Reserved | Designed with <i class="fa-solid fa-heart"></i> by WeakAhead</p>
-            </footer>
+            <div class="mini-news-container">
+                <img src="https://od2-image-api.abs-cbn.com/prod/20241201221248/b7cfdf7c0cb146a2cd0b7253aae1c6f3e012f2476b82fa121e75e875f65132a0.jpg?w=306&h=204" alt="News Image 4" class="news-image">
+                <h4 class="news-title">PAGASA: Amihan getting stronger; shear line stirring rains</h4>
+                <p class="news-publisher">ABS-CBN</p>
+                <button class="news-button" onclick="window.open('https://www.abs-cbn.com/news/weather-traffic/2024/12/1/pagasa-amihan-getting-stronger-shearline-stirring-rains-0651')">Read More</button>
+            </div>
+            <div class="mini-news-container">
+                <img src="https://files01.pna.gov.ph/category-list/2024/12/06/img5444.jpeg" alt="News Image 3" class="news-image">
+                <h4 class="news-title">UN announces P607-M for PH typhoon relief</h4>
+                <p class="news-publisher">Philippine News Agency</p>
+                <button class="news-button" onclick="window.open('https://www.pna.gov.ph/articles/1239473')">Read More</button>
+            </div>
+            <div class="mini-news-container">
+                <img src="https://static01.nyt.com/images/2024/11/16/multimedia/16xp-typhoon-jlzc/16xp-typhoon-jlzc-superJumbo.jpg?quality=75&auto=webp" alt="News Image 5" class="news-image">
+                <h4 class="news-title">Typhoon Man-yi Pounds the Philippines With Rain and High Winds</h4>
+                <p class="news-publisher">The New York Times</p>
+                <button class="news-button" onclick="window.open('https://www.nytimes.com/2024/11/16/world/asia/typhoon-man-yi-pepito-philippines.html')">Read More</button>
+            </div>
         </div>
     </div>
-
-    <!-- External JS Libraries -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <!-- Custom Script -->
     <script src="script.js"></script>
 </body>
-
 </html>
