@@ -125,19 +125,19 @@ function updateCurrentWeather(city, temp, feelsLike, weather, humidity, windSpee
 
     switch (weather.main.toLowerCase()) {
         case 'clear':
-            backgroundImage = 'url("https://c0.wallpaperflare.com/preview/913/700/937/sky-clouds-blue-skies.jpg")'; // Replace with your image path
+            backgroundImage = 'url("https://i.pinimg.com/originals/5a/40/37/5a4037c5df4438f2e087eadb3eee03f2.gif")'; // Replace with your image path
             break;
         case 'clouds':
-            backgroundImage = 'url("https://st4.depositphotos.com/15207528/29007/i/450/depositphotos_290074544-stock-photo-heavenly-dramatic-landscape-background-bad.jpg")'; // Replace with your image path
+            backgroundImage = 'url("https://i.pinimg.com/originals/3e/4e/01/3e4e010869c36e5c1c47a5b203fb74ee.gif")'; // Replace with your image path
             break;
         case 'rain':
-            backgroundImage = 'url("https://img.freepik.com/premium-photo/rainy-day-city-with-car-road-blurry-background_81048-11362.jpg")'; // Replace with your image path
+            backgroundImage = 'url("https://i.pinimg.com/originals/fd/56/f3/fd56f3d41d32e49c1467e3feec899d91.gif")'; // Replace with your image path
             break;
         case 'snow':
-            backgroundImage = 'url("https://c02.purpledshub.com/uploads/sites/77/2024/07/1ef49110-fbca-637c-a4d8-81a2ebe9b37b.jpeg")'; // Replace with your image path
+            backgroundImage = 'url("https://i.pinimg.com/originals/91/a9/b6/91a9b6cbae1175d06e70a07fc1e955f8.gif")'; // Replace with your image path
             break;
         case 'thunderstorm':
-            backgroundImage = 'url("https://14daypilot.com/themes/site_themes/agile_records/images/uploads/51/hazards_of_thunderstorms__large.jpg")'; // Replace with your image path
+            backgroundImage = 'url("https://i.pinimg.com/originals/dd/c4/db/ddc4dbaac7d7792927d96167f72473eb.gif")'; // Replace with your image path
             break;
         default:
             backgroundImage = 'url("images/default.jpg")'; // Replace with your image path
@@ -365,9 +365,9 @@ toggleButton.addEventListener("click", function() {
 
   // Change button text depending on mode
   if (body.classList.contains("mobile-mode")) {
-    toggleButton.textContent = "Switch to Desktop View";
+    toggleButton.textContent = "Desktop View";
   } else {
-    toggleButton.textContent = "Switch to Mobile View";
+    toggleButton.textContent = "Mobile View";
   }
 });
 

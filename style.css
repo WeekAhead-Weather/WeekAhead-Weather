@@ -497,7 +497,7 @@ body {
   background-color: var(--bg-color-light); /* Default to white background */
   color: var(--text-color-dark); /* Dark text for readability */
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   position: fixed;
   bottom: -50px; /* Start with the footer hidden off-screen */
   left: 0;
