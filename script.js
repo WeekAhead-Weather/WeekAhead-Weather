@@ -356,4 +356,20 @@ window.addEventListener("scroll", function() {
   lastScrollTop = window.scrollY;
 });
 
+// JavaScript to toggle mobile mode
+const toggleButton = document.querySelector(".toggle-mobile-mode");
+const body = document.body;
+
+toggleButton.addEventListener("click", function() {
+  body.classList.toggle("mobile-mode");
+
+  // Change button text depending on mode
+  if (body.classList.contains("mobile-mode")) {
+    toggleButton.textContent = "Switch to Desktop View";
+  } else {
+    toggleButton.textContent = "Switch to Mobile View";
+  }
+});
+
+
 

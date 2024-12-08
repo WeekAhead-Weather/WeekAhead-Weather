@@ -519,5 +519,83 @@ body {
   box-shadow: 0 -2px 6px var(--box-shadow-color-dark); /* Darker shadow for dark mode */
 }
 
+/* Styles for Mobile View (when the class 'mobile-view' is added) */
+.mobile-view {
+  background: #ffffff; /* White background to simulate mobile app feel */
+  color: black; /* Dark text for readability */
+  font-family: 'Arial', sans-serif;
+}
 
+.mobile-view .weather-dashboard {
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+}
+
+.mobile-view .top-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-view .forecast-container {
+  display: block; /* Make it stack */
+}
+
+.mobile-view .forecast-container .day-card {
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* Mobile Mode Styles (Hidden initially) */
+body.mobile-mode {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+body.mobile-mode .weather-dashboard {
+  width: 95%; /* Full width on mobile */
+  padding: 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px var(--box-shadow-color-light);
+}
+
+body.mobile-mode .top-bar {
+  flex-direction: column;
+  align-items: center;
+}
+
+body.mobile-mode .current-weather {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+body.mobile-mode .forecast-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns for mobile */
+  gap: 10px;
+}
+
+body.mobile-mode .map-container {
+  max-width: 100%;
+}
+
+body.mobile-mode .news-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* For small mobile screens */
+@media (max-width: 480px) {
+  body.mobile-mode .forecast-container {
+    grid-template-columns: 1fr; /* Single column for very small screens */
+  }
+
+  body.mobile-mode .mini-news-container {
+    width: 100%;
+  }
+}
 
