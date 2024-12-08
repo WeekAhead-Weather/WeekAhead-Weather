@@ -491,3 +491,33 @@ body {
         max-width: 100%;
     }
 }
+
+/* Footer Styles */
+.footer {
+  background-color: var(--bg-color-light); /* Default to white background */
+  color: var(--text-color-dark); /* Dark text for readability */
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: -50px; /* Start with the footer hidden off-screen */
+  left: 0;
+  width: 100%;
+  transition: bottom 0.3s ease; /* Smooth transition when the footer appears */
+  box-shadow: 0 -2px 6px var(--box-shadow-color-light); /* Light shadow for default theme */
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Dark Mode Styles */
+.dark-mode .footer {
+  background-color: var(--bg-color-dark); /* Dark background in dark mode */
+  color: var(--text-color-light); /* Light text in dark mode */
+  box-shadow: 0 -2px 6px var(--box-shadow-color-dark); /* Darker shadow for dark mode */
+}
+
+
+

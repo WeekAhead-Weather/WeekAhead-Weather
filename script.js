@@ -310,9 +310,8 @@ function updateBackground() {
     
     // Remove any previous background
     body.style.backgroundImage = '';
-
+    
     const currentHour = new Date().getHours();
-
     let backgroundImage = '';
 
     if (currentHour >= 6 && currentHour < 12) {
@@ -331,8 +330,30 @@ function updateBackground() {
 
     // Apply the background image
     body.style.backgroundImage = backgroundImage;
+    body.style.backgroundRepeat = "no-repeat";  // Prevent repeating
+    body.style.backgroundSize = "cover";        // Ensure the image covers the entire screen
     body.style.transition = "background-image 1s ease-in-out";
 }
 
 document.addEventListener('DOMContentLoaded', updateBackground);
+
+// Function to handle footer visibility on scroll
+let lastScrollTop = 0; // Variable to keep track of scroll position
+
+window.addEventListener("scroll", function() {
+  let footer = document.querySelector(".footer");
+
+  // Check if the user has scrolled down
+  if (window.scrollY > lastScrollTop) {
+    // User is scrolling down, show the footer
+    footer.style.bottom = "0";
+  } else {
+    // User is scrolling up, hide the footer
+    footer.style.bottom = "-50px";
+  }
+
+  // Update the last scroll position
+  lastScrollTop = window.scrollY;
+});
+
 
